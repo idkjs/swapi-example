@@ -6,7 +6,6 @@
     "start": "bsb -make-world -w",
     "clean": "bsb -clean-world",
     "webpack": "webpack -w",
-    "format": "refmt",
     "get-schema": "yarn send-introspection-query http://swapi.apis.guru/"
   },
   "keywords": ["BuckleScript"],
