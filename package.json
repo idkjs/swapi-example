@@ -1,5 +1,5 @@
 {
-  "name": "reason-apollo-test",
+  "name": "swapi-example",
   "version": "0.1.0",
   "scripts": {
     "build": "bsb -make-world",
@@ -9,9 +9,7 @@
     "format": "refmt",
     "get-schema": "yarn send-introspection-query http://swapi.apis.guru/"
   },
-  "keywords": [
-    "BuckleScript"
-  ],
+  "keywords": ["BuckleScript"],
   "author": "",
   "license": "MIT",
   "dependencies": {
