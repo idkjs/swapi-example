@@ -1,18 +1,24 @@
-/* let ste = ReasonReact.stringToElement;
+let ste = ReasonReact.stringToElement;
 
-   module PeopleQuery = [%graphql
-     {|
-       query people($first: Int) {
-           allPeople(first: $first) {
-              people{
-               id
-               name
-               birthYear
-             }
-           }
-         }
-   |}
-   ];
+let default = (value, option) =>
+  switch option {
+  | None => value
+  | Some(value) => value
+};
+
+module PeopleQuery = [%graphql
+  {|
+    query people($first: Int) {
+        allPeople(first: $first) {
+          people{
+            id
+            name
+            birthYear
+          }
+        }
+      }
+  |}
+];
 
    module Query2 = Client.Instance.Query;
 
@@ -29,14 +35,17 @@
                 | Loading => <div> (ste("Loading")) </div>
                 | Failed(error) => <div> (ste(error)) </div>
                 | Loaded(result) =>
-                  parse(result)##allPersons;
+                  let test = parse(result)##allPeople;
+                  Js.log(test);
                   <div>
                   <h1> (ReasonReact.stringToElement("TEST")) </h1>
 
-                  /* (ste("Loading"))  */
+                    <pre>
+                      (ste(default("Baffled....", Js.Json.stringifyAny(test))))
+                    </pre>    
                   </div>;
                 }
             )
-       </Query>;
-     },
-   }; */
+       </Query2>;
+     }
+   };
